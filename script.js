@@ -3,9 +3,8 @@ if (yearValue) yearValue.textContent = new Date().getFullYear();
 
 document.querySelectorAll('.stats strong').forEach((metric) => metric.classList.add('metric-ready'));
 
-// Add the premium hosting and infrastructure section without changing the existing page structure.
 const contactSection = document.getElementById('contact');
-if (contactSection) {
+if (contactSection && !document.getElementById('hosting')) {
   const premiumSection = document.createElement('section');
   premiumSection.className = 'section premium-services page-section';
   premiumSection.id = 'hosting';
@@ -24,15 +23,14 @@ if (contactSection) {
   contactSection.parentNode.insertBefore(premiumSection, contactSection);
 }
 
-// Persistent call and WhatsApp shortcuts for faster quote requests.
 const floatingActions = document.createElement('div');
 floatingActions.className = 'floating-actions';
 floatingActions.innerHTML = `
   <a class="floating-action call-action" href="tel:+917061899614" aria-label="Call HRWESITECREATERAGENCY" title="Call now">☎</a>
-  <a class="floating-action whatsapp-action" href="https://wa.me/917061899614?text=Hello%20HRWESITECREATERAGENCY%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="WhatsApp HRWESITECREATERAGENCY" title="WhatsApp">◉</a>`;
+  <a class="floating-action whatsapp-action" href="https://wa.me/917061899614?text=Hello%20HRWESITECREATERAGENCY%2C%20I%20need%20a%20quote." target="_blank" rel="noopener" aria-label="WhatsApp HRWESITECREATERAGENCY" title="WhatsApp">◉</a>
+  <a class="floating-action plan-action" href="#plans" aria-label="View premium plans" title="View premium plans">★</a>`;
 document.body.appendChild(floatingActions);
 
-// Subtle pointer motion gives the hero a premium 3D feel while respecting reduced motion.
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const heroArt = document.querySelector('.hero-art');
   window.addEventListener('pointermove', (event) => {
