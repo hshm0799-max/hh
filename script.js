@@ -1,22 +1,21 @@
 const yearValue = document.getElementById('yearValue');
 if (yearValue) yearValue.textContent = new Date().getFullYear();
 
-/* Premium cinematic space + 3D Earth backdrop */
 const cinematicStyle = document.createElement('style');
 cinematicStyle.textContent = `
   body{background:#030712!important;color:#f4f7ff!important;overflow-x:hidden}
-  body:before{content:"";position:fixed;inset:0;z-index:-5;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(31,104,218,.24),transparent 18%),radial-gradient(circle at 20% 20%,rgba(119,67,255,.2),transparent 22%),radial-gradient(circle at 85% 75%,rgba(0,209,255,.13),transparent 24%),linear-gradient(135deg,#020617,#071329 52%,#02040c)}
-  .cinematic-space{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden;background-image:radial-gradient(2px 2px at 8% 18%,#fff,transparent),radial-gradient(1px 1px at 22% 74%,#fff,transparent),radial-gradient(2px 2px at 47% 12%,#b9d9ff,transparent),radial-gradient(1px 1px at 72% 34%,#fff,transparent),radial-gradient(2px 2px at 91% 16%,#b9d9ff,transparent),radial-gradient(1px 1px at 64% 84%,#fff,transparent),radial-gradient(2px 2px at 37% 92%,#fff,transparent),radial-gradient(1px 1px at 12% 56%,#b9d9ff,transparent);animation:starDrift 18s linear infinite;opacity:.85}
-  .cinematic-space:after{content:"";position:absolute;width:55vw;height:55vw;left:22%;top:18%;border-radius:50%;background:conic-gradient(from 30deg,transparent,#254bd844,transparent 30%,#d946ef22,transparent 60%,#22d3ee33,transparent);filter:blur(28px);animation:nebulaSpin 30s linear infinite}
-  .earth-globe{position:fixed;z-index:-3;left:50%;top:52%;width:min(42vw,560px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;background:url("https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1200&q=90") center/cover;box-shadow:inset -48px -20px 80px #000c,inset 20px 8px 45px #53b7ff44,0 0 35px #1685ff66,0 0 120px #1d4ed833;filter:saturate(1.18) contrast(1.08);animation:earthFloat 14s ease-in-out infinite,earthSpin 38s linear infinite;background-position:0 50%}
-  .earth-globe:before{content:"";position:absolute;inset:-7%;border-radius:50%;border:1px solid #73caff44;box-shadow:0 0 30px #48aaff33;transform:rotateX(68deg);animation:ringSpin 10s linear infinite}
+  body:before{content:"";position:fixed;inset:0;z-index:-5;pointer-events:none;background:radial-gradient(circle at 50% 42%,rgba(31,104,218,.24),transparent 20%),radial-gradient(circle at 18% 20%,rgba(168,85,247,.18),transparent 24%),linear-gradient(135deg,#020817,#071225 55%,#020817)}
+  .cinematic-space{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden;opacity:.75;background-image:radial-gradient(2px 2px at 8% 18%,#fff,transparent),radial-gradient(1px 1px at 22% 74%,#fff,transparent),radial-gradient(2px 2px at 74% 24%,#a9d8ff,transparent),radial-gradient(1px 1px at 88% 72%,#fff,transparent),radial-gradient(1px 1px at 44% 9%,#fff,transparent),radial-gradient(1px 1px at 56% 88%,#a9d8ff,transparent);animation:starDrift 18s ease-in-out infinite alternate}
+  .cinematic-space:after{content:"";position:absolute;width:58vw;height:58vw;left:21%;top:14%;border-radius:50%;background:conic-gradient(from 30deg,transparent,#254bd844,transparent 30%,#d946ef22,transparent 65%);filter:blur(8px);animation:nebulaSpin 34s linear infinite}
+  .earth-globe{position:fixed;z-index:-3;left:50%;top:52%;width:min(42vw,560px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;background:radial-gradient(circle at 34% 28%,#56c9ff 0 3%,transparent 4%),radial-gradient(circle at 38% 34%,#1565a8 0 22%,transparent 23%),radial-gradient(circle at 62% 58%,#1e4b8c 0 18%,transparent 19%),radial-gradient(circle at 42% 43%,#0a294f 0 58%,#020a19 72%);box-shadow:inset -42px -18px 65px #000b,0 0 32px #3eaaff66,0 0 130px #237dff33;animation:earthFloat 9s ease-in-out infinite}
+  .earth-globe:before{content:"";position:absolute;inset:-7%;border-radius:50%;border:1px solid #73caff66;box-shadow:0 0 30px #48aaff33;transform:rotateX(68deg);animation:ringSpin 10s linear infinite}
   .earth-globe:after{content:"";position:absolute;inset:-20%;border-radius:50%;background:radial-gradient(circle,#38bdf811 0 45%,transparent 67%);filter:blur(12px)}
   .site-header,.section,.ticker,.site-footer{position:relative;background:rgba(3,9,22,.72)!important;color:#f4f7ff!important;border-color:#ffffff1c!important}.site-header{backdrop-filter:blur(18px)}
-  .section-heading>p:last-child,.hero-text,.split-heading>p,.process-step p,.video-copy>p:not(.eyebrow),.map-copy>p:not(.eyebrow){color:#b9c6dc!important}.service-card{background:#0b1425cc!important;border-color:#ffffff20!important;color:#f4f7ff}.service-card p{color:#afbdd2}.work-section,.services-section,.process-section,.map-section{background:transparent!important}.map-section{background:#07152acc!important}.contact-section{background:linear-gradient(135deg,#d94f5f,#7136b8)!important}
-  .hero-image:before{background:#40d9ff!important}.btn-primary,.btn-dark{background:linear-gradient(135deg,#16c5ff,#7255ff)!important;color:white!important;box-shadow:0 12px 35px #257bff55}.brand-mark,.featured-service{background:linear-gradient(135deg,#c5ff63,#48e3ff)!important}
-  .broadcast-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 20px;background:#020817e8;border-bottom:1px solid #315db855;color:#91b9ff;font:600 .78rem/1.4 monospace;letter-spacing:.04em}.broadcast-bar strong{color:#ff7180}.broadcast-contact{display:flex;gap:18px;color:#a6b0c3}.broadcast-contact a{color:#43e6b0}.agency-signature{display:inline-flex;align-items:center;gap:9px;margin:0 0 20px;padding:9px 14px;border:1px solid #6b58ff88;border-radius:999px;background:linear-gradient(100deg,#192f66cc,#421f72cc);color:#e6e9ff;font:700 .72rem/1.2 monospace;letter-spacing:.08em;text-transform:uppercase}.agency-signature span{color:#8beaff}.ai-search-note{margin-top:18px!important;color:#8294b3!important;font-size:.82rem!important}.hero-content h1,.section-heading h2,.cta-box h2{color:#f5f7ff;text-shadow:0 0 30px #4a83ff25}
-  @keyframes starDrift{to{transform:translate3d(-18px,12px,0) scale(1.08)}}@keyframes nebulaSpin{to{transform:rotate(360deg)}}@keyframes earthFloat{0%,100%{margin-top:0}50%{margin-top:-18px}}@keyframes earthSpin{from{background-position:0 50%}to{background-position:220% 50%}}@keyframes ringSpin{to{transform:rotateX(68deg) rotateZ(360deg)}}
-  @media(max-width:700px){.earth-globe{width:78vw;top:47%;opacity:.22}.cinematic-space:after{width:100vw;height:100vw;left:0;top:25%}.broadcast-bar{align-items:flex-start;flex-direction:column;padding:10px 14px}.broadcast-contact{gap:10px;flex-wrap:wrap}}
+  .service-card,.pricing-card,.process-item,.work-card,.contact-box{box-shadow:0 18px 55px #0005;backdrop-filter:blur(12px)}
+  .btn-primary,.btn-dark{background:linear-gradient(135deg,#16c5ff,#7255ff)!important;color:white!important;box-shadow:0 12px 35px #257bff55}
+  .broadcast-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 20px;background:#020817e8;border-bottom:1px solid #315db855;color:#91b9ff;font:600 .78rem/1.4 'DM Sans',sans-serif;letter-spacing:.04em}.broadcast-bar a{color:#d8ecff}.broadcast-contact{display:flex;gap:14px}
+  @keyframes starDrift{to{transform:translate3d(-18px,12px,0) scale(1.08)}}@keyframes nebulaSpin{to{transform:rotate(360deg)}}@keyframes ringSpin{to{transform:rotateX(68deg) rotateZ(360deg)}}@keyframes earthFloat{0%,100%{margin-top:0}50%{margin-top:-18px}}
+  @media(max-width:700px){.earth-globe{width:78vw;top:47%;opacity:.22}.cinematic-space:after{width:100vw;height:100vw;left:0;top:25%}.broadcast-bar{align-items:flex-start;flex-direction:column;padding:9px 14px}.broadcast-contact{flex-wrap:wrap}}
   @media(prefers-reduced-motion:reduce){.cinematic-space,.cinematic-space:after,.earth-globe,.earth-globe:before{animation:none!important}}
 `;
 document.head.appendChild(cinematicStyle);
@@ -29,33 +28,37 @@ earth.className = 'earth-globe';
 earth.setAttribute('aria-hidden', 'true');
 document.body.prepend(space, earth);
 
-/* Add the live agency broadcast treatment shown in the supplied reference image. */
 const header = document.querySelector('.site-header');
-if (header && !document.querySelector('.broadcast-bar')) {
+if (header && !header.querySelector('.broadcast-bar')) {
   const broadcast = document.createElement('div');
   broadcast.className = 'broadcast-bar';
-  broadcast.innerHTML = '<span>◉ <strong>LIVE</strong> &nbsp; India-focused web, app & API studio // Ranchi HQ</span><span class="broadcast-contact"><a href="tel:+917061899614">☎ +91 7061899614</a><a href="https://wa.me/917061899614" target="_blank" rel="noopener">◌ Chat Support Live</a></span>';
+  broadcast.innerHTML = '<span>◉ <strong>LIVE</strong> &nbsp; India-focused web, app & API studio // Ranchi HQ</span><span class="broadcast-contact"><a href="tel:+917061899614">☎ +91 7061899614</a><a href="#plans">View premium plans</a></span>';
   header.prepend(broadcast);
 }
-const heroContent = document.querySelector('.hero-content');
-if (heroContent && !heroContent.querySelector('.agency-signature')) {
-  const signature = document.createElement('div');
-  signature.className = 'agency-signature';
-  signature.innerHTML = '<span>✦</span> Premium 3D digital engineering studio';
-  heroContent.prepend(signature);
-  const note = document.createElement('p');
-  note.className = 'ai-search-note';
-  note.textContent = 'Websites • mobile apps • APIs • e-commerce • portfolio experiences';
-  const heroText = heroContent.querySelector('.hero-text');
-  if (heroText) heroText.insertAdjacentElement('afterend', note);
-}
+
+const planData = {
+  mega: {name:'Mega Scale', price:'₹80,000', subtitle:'High-performance platform for ambitious teams.', features:['Grade architecture','120GB High-Speed Storage','Advanced DNS + SSL','24/7 Dedicated Technical Squad Support','Advanced API integrations','Custom databases']},
+  custom: {name:'Custom App Ecosystem', price:'₹100,000', subtitle:'A bespoke application foundation with every critical service connected.', features:['Bespoke application development','Full block architecture','All global services integrated','Product design and strategy','Scalable data and API layer','Launch support']},
+  ultimate: {name:'Ultimate Command', price:'₹150,000', subtitle:'Complete ownership of a full-scale web and app infrastructure.', features:['Full-scale custom Web + App infrastructure','Complete ownership and governance','Lifetime support','Priority launch and optimization','Security and performance planning','Dedicated technical squad']}
+};
+const modal = document.getElementById('planModal');
+const modalContent = document.getElementById('modalContent');
+const closeModal = () => { if (!modal) return; modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
+const openModal = key => {
+  const plan = planData[key];
+  if (!modal || !modalContent || !plan) return;
+  modalContent.innerHTML = `<div class="modal-header"><p class="eyebrow">Premium plan</p><h3 id="modalTitle">${plan.name} · ${plan.price}</h3><p class="modal-subtitle">${plan.subtitle}</p></div><div class="modal-grid"><div class="modal-box"><h4>Included</h4><ul>${plan.features.map(item => `<li>${item}</li>`).join('')}</ul></div><div class="modal-box"><h4>Next step</h4><p>Tell us your goal, timeline and current setup. We will shape the right implementation path for your business.</p></div></div><div class="modal-cta"><a class="btn btn-primary" href="tel:+917061899614">Discuss this plan ↗</a></div>`;
+  modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  modal.querySelector('.modal-close')?.focus();
+};
+document.querySelectorAll('[data-plan]').forEach(button => button.addEventListener('click', event => openModal(event.currentTarget.dataset.plan)));
+modal?.querySelector('.modal-close')?.addEventListener('click', closeModal);
+modal?.querySelector('[data-close="true"]')?.addEventListener('click', closeModal);
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
 
 const items = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-  }), { threshold: .12 });
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), {threshold:.12});
   items.forEach(item => observer.observe(item));
 } else items.forEach(item => item.classList.add('visible'));
-
 document.querySelectorAll('a[href^="tel:"]').forEach(link => link.addEventListener('click', () => link.blur()));
